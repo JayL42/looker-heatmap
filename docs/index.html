@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Looker Custom Heatmap Visualization</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    h1 { color: #1a73e8; }
+    code {
+      background: #f5f5f5;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    pre {
+      background: #f5f5f5;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+    .url-box {
+      background: #e8f5e9;
+      border: 1px solid #4caf50;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+    .url-box code {
+      background: white;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Looker Custom Heatmap Visualization</h1>
+
+  <p>This page hosts a custom heatmap visualization for Looker.</p>
+
+  <div class="url-box">
+    <strong>Visualization URL:</strong><br>
+    <code id="viz-url"></code>
+  </div>
+
+  <h2>Setup in Looker</h2>
+  <ol>
+    <li>Go to <strong>Admin</strong> &gt; <strong>Visualizations</strong></li>
+    <li>Click <strong>Add Visualization</strong></li>
+    <li>Enter:
+      <ul>
+        <li><strong>ID:</strong> <code>custom_heatmap</code></li>
+        <li><strong>Label:</strong> <code>Custom Heatmap</code></li>
+        <li><strong>Main:</strong> Copy the URL above</li>
+      </ul>
+    </li>
+    <li>Click <strong>Save</strong></li>
+  </ol>
+
+  <h2>Usage</h2>
+  <p>In any Explore, structure your query as:</p>
+  <ul>
+    <li><strong>First dimension:</strong> X-axis categories (columns)</li>
+    <li><strong>Second dimension:</strong> Y-axis categories (rows)</li>
+    <li><strong>First measure:</strong> Value for color intensity</li>
+  </ul>
+  <p>Then select <strong>Custom Heatmap</strong> from the visualization picker.</p>
+
+  <h2>Features</h2>
+  <ul>
+    <li>6 built-in color schemes + custom colors</li>
+    <li>Configurable cell padding, values, and formatting</li>
+    <li>Axis label controls with rotation</li>
+    <li>Gradient legend with positioning options</li>
+    <li>Tooltips and drill-through support</li>
+  </ul>
+
+  <script>
+    // Display the correct URL based on current location
+    const baseUrl = window.location.href.replace('index.html', '').replace(/\/$/, '');
+    document.getElementById('viz-url').textContent = baseUrl + '/heatmap.js';
+  </script>
+</body>
+</html>
