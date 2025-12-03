@@ -22,6 +22,8 @@ looker.plugins.visualizations.add({
       label: "Color Scheme",
       display: "select",
       values: [
+        { "Returnalyze": "returnalyze" },
+        { "Returnalyze Slate": "returnalyze-slate" },
         { "Blue": "blue" },
         { "Green": "green" },
         { "Red": "red" },
@@ -30,7 +32,7 @@ looker.plugins.visualizations.add({
         { "Blue-Red Diverging": "diverging" },
         { "Custom": "custom" }
       ],
-      default: "blue",
+      default: "returnalyze",
       order: 1
     },
     lowColor: {
@@ -169,7 +171,7 @@ looker.plugins.visualizations.add({
     element.innerHTML = `
       <style>
         .heatmap-container {
-          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif;
+          font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif;
           width: 100%;
           height: 100%;
           display: flex;
@@ -338,6 +340,16 @@ looker.plugins.visualizations.add({
       let lowColor, highColor, midColor;
 
       switch (config.colorScheme) {
+        case 'returnalyze':
+          // Primary blue: #2563eb with light sky blue background: #e0f2fe
+          lowColor = '#e0f2fe';  // appBg - light sky blue
+          highColor = '#2563eb'; // colorPrimary - Returnalyze blue
+          break;
+        case 'returnalyze-slate':
+          // Slate/neutral palette for secondary data
+          lowColor = '#f1f5f9';  // slate-100
+          highColor = '#1e293b'; // textColor - dark slate
+          break;
         case 'blue':
           lowColor = '#f7fbff';
           highColor = '#08519c';
